@@ -1,0 +1,242 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Groupon To Go Swagger Test API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/togo/api/v1/test": {
+      "get": {
+        "tags": [
+          "GoTest"
+        ],
+        "summary": "This endpoint tests getting all of the models.",
+        "operationId": "GetTestModels",
+        "parameters": [
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "description": "Accept-Encoding",
+            "required": false,
+            "type": "string",
+            "default": "identity",
+            "enum": [
+              "identity",
+              "gzip",
+              "deflate"
+            ]
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "description": "id that represent the Api client",
+            "required": true,
+            "type": "string",
+            "x-example": "swagger_ui"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GoTestResults"
+            }
+          },
+          "400": {
+            "description": "Invalid client input",
+            "schema": {
+              "$ref": "#/definitions/ErrorInfo"
+            }
+          },
+          "424": {
+            "description": "Timeout",
+            "schema": {
+              "$ref": "#/definitions/ErrorInfo"
+            }
+          },
+          "500": {
+            "description": "Unexpected Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorInfo"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AllPrimitives": {
+      "type": "object",
+      "properties": {
+        "myInt": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "myIntArray": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "myInt64": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "myInt64Array": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "myFloat": {
+          "type": "number",
+          "format": "float"
+        },
+        "myFloatArray": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "myDouble": {
+          "type": "number",
+          "format": "double"
+        },
+        "myDoubleArray": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "myString": {
+          "type": "string"
+        },
+        "myStringArray": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "myBytes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "myBytesArray": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "myBinary": {
+          "type": "string",
+          "format": "binary"
+        },
+        "myBinaryArray": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "binary"
+          }
+        },
+        "myBoolean": {
+          "type": "boolean"
+        },
+        "myBooleanArray": {
+          "type": "array",
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "myDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "myDateArray": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "myDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "myDateTimeArray": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "myFile": {
+          "type": "file"
+        },
+        "myFileArray": {
+          "type": "array",
+          "items": {
+            "type": "file"
+          }
+        },
+        "myUUID": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "myUUIDArray": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "myStringEnum": {
+          "type": "string",
+          "enum": [
+            "stringEnumValue1",
+            "stringEnumValue2",
+            "stringEnumValue3"
+          ]
+        }
+      },
+      "description": "Object which shows an example of all primitive Swagger types"
+    },
+    "ErrorInfo": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Example Error object"
+    },
+    "GoTestResults": {
+      "type": "object",
+      "properties": {
+        "myPrimitives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AllPrimitives"
+          }
+        },
+        "myPrimitive": {
+          "$ref": "#/definitions/AllPrimitives"
+        }
+      },
+      "description": "Example Response object"
+    }
+  }
+}
